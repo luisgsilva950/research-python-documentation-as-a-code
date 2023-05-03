@@ -2,7 +2,7 @@ import os
 from unittest import TestCase
 from unittest.mock import Mock
 
-from src.state_machine import StateMachineTransaction, StateMachine
+from src.state_machine import StateMachineTransition, StateMachine
 
 
 class TestStateMachine(TestCase):
@@ -23,9 +23,9 @@ class TestStateMachine(TestCase):
     def test_should_create_diagram_files(self):
         states = ['A', 'B', 'C']
 
-        transitions = [StateMachineTransaction(label='Mov A -> B', source=states[0], destiny=states[1]),
-                       StateMachineTransaction(label='Mov B -> C', source=states[1], destiny=states[2]),
-                       StateMachineTransaction(label='Loop C', source=states[2], destiny=states[2])]
+        transitions = [StateMachineTransition(label='Mov A -> B', source=states[0], destiny=states[1]),
+                       StateMachineTransition(label='Mov B -> C', source=states[1], destiny=states[2]),
+                       StateMachineTransition(label='Loop C', source=states[2], destiny=states[2])]
 
         machine = StateMachine(title="Test", states=states, transactions=transitions)
 
@@ -41,8 +41,8 @@ class TestStateMachine(TestCase):
     def test_should_call_graph_render_functions(self):
         states = ['A', 'B']
 
-        transitions = [StateMachineTransaction(label='A -> B', source=states[0], destiny=states[1]),
-                       StateMachineTransaction(label='B -> C', source=states[1], destiny=states[1])]
+        transitions = [StateMachineTransition(label='A -> B', source=states[0], destiny=states[1]),
+                       StateMachineTransition(label='B -> C', source=states[1], destiny=states[1])]
 
         machine = StateMachine(title="Foobar", states=states, transactions=transitions)
         machine.graph = Mock()

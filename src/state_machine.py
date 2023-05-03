@@ -37,7 +37,7 @@ class GraphColors(Enum):
     LIGHT_GRAY = 'lightgray'
 
 
-class StateMachineTransaction:
+class StateMachineTransition:
 
     def __init__(self, source: str, destiny: str, label: str):
         self.label = label
@@ -49,7 +49,7 @@ class StateMachineTransaction:
 
 
 class StateMachine(Diagram):
-    def __init__(self, title: str, states: List[str], transactions: List[StateMachineTransaction],
+    def __init__(self, title: str, states: List[str], transactions: List[StateMachineTransition],
                  direction: StateMachineDirection = StateMachineDirection.TOP_TO_BOTTOM,
                  box_color=GraphColors.LIGHT_GRAY):
         self.title = title
