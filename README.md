@@ -36,4 +36,7 @@ Build your code on `main.py` and run the main file. it should generate a svg fil
 on the code.
 
 
+### Simple sumo robot state machine example
+![state_machine_labIII.svg](resources/state_machine_sumo_robot_simple.svg)
+
 

@@ -1,6 +1,7 @@
 from src.state_machine import StateMachine, StateMachineTransaction
 
-if __name__ == '__main__':
+
+def example_state_machine():
     states = ['Inicial', 'Espera', 'Procura Oponente', 'Move Frente', 'Move Ré']
 
     transitions = [StateMachineTransaction(label='Liga', source=states[0], destiny=states[1]),
@@ -13,5 +14,9 @@ if __name__ == '__main__':
                    StateMachineTransaction(label='100ms', source=states[4], destiny=states[4]),
                    StateMachineTransaction(label='T > 100ms', source=states[4], destiny=states[2])]
 
-    sm = StateMachine(title="Máquina de Estados: Robô de Sumo Lab III", states=states, transactions=transitions)
-    sm.save_as_svg('state_machine_labIII')
+    return StateMachine(title="Simple Sumo Robot", states=states, transactions=transitions)
+
+
+if __name__ == '__main__':
+    sm = example_state_machine()
+    sm.save_as_svg('state_machine_sumo_robot_simple')

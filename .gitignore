@@ -3,4 +3,4 @@ venv/*
 
 .DS_Store
 /state_machine_labIII
-/state_machine_labIII.svg
+/state_machine_sumo_robot_simple
