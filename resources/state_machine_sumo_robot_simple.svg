@@ -33,7 +33,7 @@
 <title>Wait&#45;&gt;Wait</title>
 <path fill="none" stroke="black" d="M226.5,-290.68C246.59,-293.46 267.2,-291.06 267.2,-283.5 267.2,-277.83 255.62,-275.07 241.36,-275.21"/>
 <polygon fill="black" stroke="black" points="241.41,-271.76 231.63,-275.82 241.82,-278.75 241.41,-271.76"/>
-<text text-anchor="middle" x="280.7" y="-278.45" font-family="Times,serif" font-size="14.00"> &#160;5s &#160;</text>
+<text text-anchor="middle" x="292.32" y="-278.45" font-family="Times,serif" font-size="14.00"> &#160;T &lt; 5s &#160;</text>
 </g>
 <!-- Opponent Seek -->
 <g id="node3" class="node">
@@ -100,7 +100,7 @@
 <title>Move Back&#45;&gt;Move Back</title>
 <path fill="none" stroke="black" d="M248.41,-26.01C272.91,-27.24 294.99,-24.57 294.99,-18 294.99,-13.21 283.27,-10.5 267.44,-9.85"/>
 <polygon fill="black" stroke="black" points="267.56,-6.34 257.52,-9.73 267.47,-13.34 267.56,-6.34"/>
-<text text-anchor="middle" x="320.87" y="-12.95" font-family="Times,serif" font-size="14.00"> &#160;100ms &#160;</text>
+<text text-anchor="middle" x="332.49" y="-12.95" font-family="Times,serif" font-size="14.00"> &#160;T &lt; 100ms &#160;</text>
 </g>
 </g>
 </svg>
