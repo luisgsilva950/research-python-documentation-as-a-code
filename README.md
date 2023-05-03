@@ -28,11 +28,12 @@ Don't waste any more time manually creating diagrams for your reports. Take adva
 quality of our SVG diagram generation scripts. Enhance the presentation of your data and concepts in a professional and
 elegant manner.
 
-### Diagrams: 
+### Diagrams:
+
 - &#x2714; State Machines
-- &#x2718; C4 Model
-- &#x2718; Min Maps
-- &#x2718; UML
+- &#x2718; C4 Model (WIP)
+- &#x2718; Min Maps (WIP)
+- &#x2718; UML (WIP)
 
 Try our scripts today and elevate the value of your reports with high-quality diagrams!
 
@@ -64,12 +65,15 @@ pip install -r requirements.txt
 ````
 
 ### Documentation: State Machine
+
 For create a state machine, you must define 3 important aspects:
+
 - Title
 - States
 - Transitions
 
-For execute it, you can follow this example: 
+For execute it, you can follow this example:
+
 ```python
 def example_state_machine():
     states = ['Home', 'Wait', 'Opponent Seek', 'Move Forward', 'Move Back']
@@ -90,7 +94,8 @@ def example_state_machine():
 You also is able to define the box colors and diagram direction. See the example:
 
 ```python
-StateMachine(title="Foobar", states=states, transactions=transitions, box_color=GraphColors.LIGHT_BLUE, direction=StateMachineDirection.BOTTOM_TO_TOP)
+StateMachine(title="Foobar", states=states, transactions=transitions, box_color=GraphColors.LIGHT_BLUE,
+             direction=StateMachineDirection.BOTTOM_TO_TOP)
 ```
 
 ### Running Project
