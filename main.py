@@ -13,5 +13,5 @@ if __name__ == '__main__':
                    StateMachineTransaction(label='100ms', source=states[4], destiny=states[4]),
                    StateMachineTransaction(label='T > 100ms', source=states[4], destiny=states[2])]
 
-    sm = StateMachine(title="Teste Robô de Sumo Lab III", states=states, transactions=transitions)
-    sm.save_as_svg('maquina_estados_labIII')
+    sm = StateMachine(title="Máquina de Estados: Robô de Sumo Lab III", states=states, transactions=transitions)
+    sm.save_as_svg('state_machine_labIII')
