@@ -2,15 +2,15 @@ from src.state_machine import StateMachine, StateMachineTransaction
 
 
 def example_state_machine():
-    states = ['Inicial', 'Espera', 'Procura Oponente', 'Move Frente', 'Move Ré']
+    states = ['Home', 'Wait', 'Opponent Seek', 'Move Forward', 'Move Back']
 
-    transitions = [StateMachineTransaction(label='Liga', source=states[0], destiny=states[1]),
+    transitions = [StateMachineTransaction(label='Turn On', source=states[0], destiny=states[1]),
                    StateMachineTransaction(label='5s', source=states[1], destiny=states[1]),
                    StateMachineTransaction(label='T > 5s', source=states[1], destiny=states[2]),
-                   StateMachineTransaction(label='Oponente não encontrado', source=states[2], destiny=states[2]),
-                   StateMachineTransaction(label='Oponente encontrado', source=states[2], destiny=states[3]),
-                   StateMachineTransaction(label='Borda não encontrada', source=states[3], destiny=states[3]),
-                   StateMachineTransaction(label='Borda encontrada', source=states[3], destiny=states[4]),
+                   StateMachineTransaction(label='Opponent not found', source=states[2], destiny=states[2]),
+                   StateMachineTransaction(label='Opponent found', source=states[2], destiny=states[3]),
+                   StateMachineTransaction(label='Edge not found', source=states[3], destiny=states[3]),
+                   StateMachineTransaction(label='Edge found', source=states[3], destiny=states[4]),
                    StateMachineTransaction(label='100ms', source=states[4], destiny=states[4]),
                    StateMachineTransaction(label='T > 100ms', source=states[4], destiny=states[2])]
 
