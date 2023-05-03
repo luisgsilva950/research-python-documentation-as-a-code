@@ -72,7 +72,7 @@ For create a state machine, you must define 3 important aspects:
 - States
 - Transitions
 
-For execute it, you can follow this example:
+Example:
 
 ```python
 def example_state_machine():
