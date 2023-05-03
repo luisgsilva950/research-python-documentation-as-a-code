@@ -39,16 +39,15 @@ class TestStateMachine(TestCase):
         self.assertTrue(self.__get_svg_file_name() in directories)
 
     def test_should_call_graph_render_functions(self):
-        states = ['A', 'B', 'C']
+        states = ['A', 'B']
 
-        transitions = [StateMachineTransaction(label='Mov A -> B', source=states[0], destiny=states[1]),
-                       StateMachineTransaction(label='Mov B -> C', source=states[1], destiny=states[2]),
-                       StateMachineTransaction(label='Loop C', source=states[2], destiny=states[2])]
+        transitions = [StateMachineTransaction(label='A -> B', source=states[0], destiny=states[1]),
+                       StateMachineTransaction(label='B -> C', source=states[1], destiny=states[1])]
 
-        machine = StateMachine(title="Test", states=states, transactions=transitions)
+        machine = StateMachine(title="Foobar", states=states, transactions=transitions)
         machine.graph = Mock()
         machine.save_as_svg(filename=self.__get_file_name())
-        machine.graph.attr.assert_called_once_with(label="Test", labelloc='t', fontsize='20')
-        self.assertEqual(3, machine.graph.node.call_count)
-        self.assertEqual(3, machine.graph.edge.call_count)
+        machine.graph.attr.assert_called_once_with(label="Foobar", labelloc='t', fontsize='20')
+        self.assertEqual(2, machine.graph.node.call_count)
+        self.assertEqual(2, machine.graph.edge.call_count)
         machine.graph.render.assert_called_once()
