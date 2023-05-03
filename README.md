@@ -98,6 +98,10 @@ StateMachine(title="Foobar", states=states, transactions=transitions, box_color=
              direction=StateMachineDirection.BOTTOM_TO_TOP)
 ```
 
+### Running Project tests
+```
+python3 -m pytest tests/* -v -o log_cli=true
+```
 ### Running Project
 
 Build your code on `main.py` and run the main file. it should generate a svg file with the specified name that you put
