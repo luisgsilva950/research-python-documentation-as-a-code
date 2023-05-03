@@ -26,14 +26,14 @@ class GraphColors(Enum):
     GRAY = 'gray'
     BLACK = 'black'
     WHITE = 'white'
-    LIGHT_RED = 'lightred'
+    LIGHT_RED = 'lightcoral'
     LIGHT_GREEN = 'lightgreen'
-    LIGHT_BLUE = 'lightblue'
+    LIGHT_BLUE = 'lightblue2'
     LIGHT_YELLOW = 'lightyellow'
     LIGHT_ORANGE = 'lightorange'
-    LIGHT_PURPLE = 'lightpurple'
+    LIGHT_PURPLE = 'lightslateblue'
     LIGHT_CYAN = 'lightcyan'
-    LIGHT_MAGENTA = 'lightmagenta'
+    LIGHT_MAGENTA = 'lightcoral'
     LIGHT_GRAY = 'lightgray'
 
 
@@ -49,18 +49,33 @@ class StateMachineTransition:
 
 
 class StateMachine(Diagram):
-    def __init__(self, title: str, states: List[str], transactions: List[StateMachineTransition],
+    def __init__(self, title: str, states: List[str], transitions: List[StateMachineTransition] = None,
                  direction: StateMachineDirection = StateMachineDirection.TOP_TO_BOTTOM,
                  box_color=GraphColors.LIGHT_GRAY):
         self.title = title
         self.direction = direction
         self.box_color = box_color
-        self.machine = Machine(model=self, states=[*states], transitions=[t.to_machine_dict() for t in transactions],
-                               initial=states[0], auto_transitions=False)
+        self.states = states
+        self.transitions = transitions or []
+        self.machine = None
+        self.update_machine()
         self.graph = graphviz.Digraph(format='svg',
                                       graph_attr={'ranksep': '0.5', 'nodesep': '0.5', 'rankdir': self.direction.value},
                                       node_attr={'style': 'filled', 'fillcolor': self.box_color.value, 'shape': 'egg'},
                                       edge_attr={})
+
+    def update_machine(self):
+        self.machine = Machine(model=self, states=[*self.states],
+                               transitions=[t.to_machine_dict() for t in self.transitions],
+                               initial=self.states[0], auto_transitions=False)
+
+    def add_transition(self, transition: StateMachineTransition):
+        if transition.source not in self.states:
+            self.states = [*self.states, transition.source]
+        if transition.destiny not in self.states:
+            self.states = [*self.states, transition.destiny]
+        self.transitions.append(transition)
+        self.update_machine()
 
     def save_as_svg(self, filename: str):
         self.graph.attr(label=self.title, labelloc='t', fontsize='20')

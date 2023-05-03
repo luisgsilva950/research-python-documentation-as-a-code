@@ -13,8 +13,7 @@ def example_state_machine():
                    StateMachineTransition(label='Edge found', source=states[3], destiny=states[4]),
                    StateMachineTransition(label='100ms', source=states[4], destiny=states[4]),
                    StateMachineTransition(label='T > 100ms', source=states[4], destiny=states[2])]
-
-    return StateMachine(title="Simple Sumo Robot", states=states, transactions=transitions)
+    return StateMachine(title="Simple Sumo Robot", states=states, transitions=[*transitions])
 
 
 if __name__ == '__main__':
