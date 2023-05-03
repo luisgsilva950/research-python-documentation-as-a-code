@@ -71,6 +71,6 @@ class StateMachine(Diagram):
         for trigger, transition in self.machine.events.items():
             for t_label, transitions in transition.transitions.items():
                 for t in transitions:
-                    self.graph.edge(t.source, t.dest, label=trigger)
+                    self.graph.edge(t.source, t.dest, label="  {}  ".format(trigger))
 
         self.graph.render(filename)
