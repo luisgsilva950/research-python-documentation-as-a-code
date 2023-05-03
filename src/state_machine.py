@@ -4,6 +4,8 @@ from typing import List
 import graphviz
 from transitions import Machine
 
+from src.diagram import Diagram
+
 
 class StateMachineDirection(Enum):
     TOP_TO_BOTTOM = 'TB'
@@ -46,7 +48,7 @@ class StateMachineTransaction:
         return dict(trigger=self.label, source=self.source, dest=self.destiny)
 
 
-class StateMachine:
+class StateMachine(Diagram):
     def __init__(self, title: str, states: List[str], transactions: List[StateMachineTransaction],
                  direction: StateMachineDirection = StateMachineDirection.TOP_TO_BOTTOM,
                  box_color=GraphColors.LIGHT_GRAY):
@@ -56,7 +58,7 @@ class StateMachine:
         self.machine = Machine(model=self, states=[*states], transitions=[t.to_machine_dict() for t in transactions],
                                initial=states[0], auto_transitions=False)
 
-    def save_as_svg(self, filename):
+    def save_as_svg(self, filename: str):
         graph = graphviz.Digraph(format='svg',
                                  graph_attr={'ranksep': '0.5', 'nodesep': '0.5', 'rankdir': self.direction.value},
                                  node_attr={'style': 'filled', 'fillcolor': self.box_color.value, 'shape': 'egg'},
