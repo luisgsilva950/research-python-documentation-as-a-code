@@ -88,13 +88,13 @@ def example_state_machine():
                    StateMachineTransition(label='100ms', source=states[4], destiny=states[4]),
                    StateMachineTransition(label='T > 100ms', source=states[4], destiny=states[2])]
 
-    return StateMachine(title="Simple Sumo Robot", states=states, transactions=transitions)
+    return StateMachine(title="Simple Sumo Robot", states=states, transitions=transitions)
 ```
 
 You also is able to define the box colors and diagram direction. See the example:
 
 ```python
-StateMachine(title="Foobar", states=states, transactions=transitions, box_color=GraphColors.LIGHT_BLUE,
+StateMachine(title="Foobar", states=states, transitions=transitions, box_color=GraphColors.LIGHT_BLUE,
              direction=StateMachineDirection.BOTTOM_TO_TOP)
 ```
 
