@@ -57,17 +57,19 @@ class StateMachine(Diagram):
         self.box_color = box_color
         self.states = states
         self.transitions = transitions or []
-        self.machine = None
-        self.update_machine()
+        self.machine = self.__get_new_machine()
         self.graph = graphviz.Digraph(format='svg',
                                       graph_attr={'ranksep': '0.5', 'nodesep': '0.5', 'rankdir': self.direction.value},
                                       node_attr={'style': 'filled', 'fillcolor': self.box_color.value, 'shape': 'egg'},
                                       edge_attr={})
 
+    def __get_new_machine(self):
+        return Machine(model=self, states=[*self.states],
+                       transitions=[t.to_machine_dict() for t in self.transitions],
+                       initial=self.states[0], auto_transitions=False)
+
     def update_machine(self):
-        self.machine = Machine(model=self, states=[*self.states],
-                               transitions=[t.to_machine_dict() for t in self.transitions],
-                               initial=self.states[0], auto_transitions=False)
+        self.machine = self.__get_new_machine()
 
     def add_transition(self, transition: StateMachineTransition):
         if transition.source not in self.states:
