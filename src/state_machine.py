@@ -59,9 +59,9 @@ class StateMachine(Diagram):
         self.transitions = transitions or []
         self.machine = self.__get_new_machine()
         self.graph = graphviz.Digraph(format='svg',
-                                      graph_attr={'ranksep': '0.5', 'nodesep': '0.5', 'rankdir': self.direction.value},
+                                      graph_attr={'ranksep': '0.1', 'nodesep': '0.1', 'rankdir': self.direction.value},
                                       node_attr={'style': 'filled', 'fillcolor': self.box_color.value, 'shape': 'egg'},
-                                      edge_attr={})
+                                      edge_attr={'arrowsize': '0.5', 'penwidth': '0.5'})
 
     def __get_new_machine(self):
         return Machine(model=self, states=[*self.states],
@@ -80,14 +80,14 @@ class StateMachine(Diagram):
         self.update_machine()
 
     def save_as_svg(self, filename: str):
-        self.graph.attr(label=self.title, labelloc='t', fontsize='20')
+        self.graph.attr(label=self.title, labelloc='t', fontsize='9')
 
         for state in self.machine.states:
-            self.graph.node(state)
+            self.graph.node(state, fontsize='7')
 
         for trigger, transition in self.machine.events.items():
             for t_label, transitions in transition.transitions.items():
                 for t in transitions:
-                    self.graph.edge(t.source, t.dest, label="  {}  ".format(trigger))
+                    self.graph.edge(t.source, t.dest, label="  {}  ".format(trigger), fontsize='6')
 
         self.graph.render(filename)
